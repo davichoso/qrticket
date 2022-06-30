@@ -17,3 +17,26 @@ model User {
   updatedAt DateTime @updatedAt
   username  String   @unique
 }
+
+model Qr {
+  code      String   @unique
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+  used      Boolean
+}
+
+model Event {
+  closeAt   DateTime
+  createdAt DateTime  @default(now())
+  id        String    @id @default(cuid())
+  openAt    DateTime
+  title     DateTime?
+  updatedAt DateTime  @updatedAt
+}
+
+model Room {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
