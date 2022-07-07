@@ -7,6 +7,8 @@ export type UserOrderByInput = {
   lastName?: SortOrder;
   password?: SortOrder;
   roles?: SortOrder;
+  testfield1?: SortOrder;
+  testfield2?: SortOrder;
   updatedAt?: SortOrder;
   username?: SortOrder;
 };
