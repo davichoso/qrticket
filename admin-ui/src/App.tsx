@@ -9,6 +9,18 @@ import { UserList } from "./user/UserList";
 import { UserCreate } from "./user/UserCreate";
 import { UserEdit } from "./user/UserEdit";
 import { UserShow } from "./user/UserShow";
+import { QrList } from "./qr/QrList";
+import { QrCreate } from "./qr/QrCreate";
+import { QrEdit } from "./qr/QrEdit";
+import { QrShow } from "./qr/QrShow";
+import { EventList } from "./event/EventList";
+import { EventCreate } from "./event/EventCreate";
+import { EventEdit } from "./event/EventEdit";
+import { EventShow } from "./event/EventShow";
+import { RoomList } from "./room/RoomList";
+import { RoomCreate } from "./room/RoomCreate";
+import { RoomEdit } from "./room/RoomEdit";
+import { RoomShow } from "./room/RoomShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -41,6 +53,27 @@ const App = (): React.ReactElement => {
           edit={UserEdit}
           create={UserCreate}
           show={UserShow}
+        />
+        <Resource
+          name="Qr"
+          list={QrList}
+          edit={QrEdit}
+          create={QrCreate}
+          show={QrShow}
+        />
+        <Resource
+          name="Event"
+          list={EventList}
+          edit={EventEdit}
+          create={EventCreate}
+          show={EventShow}
+        />
+        <Resource
+          name="Room"
+          list={RoomList}
+          edit={RoomEdit}
+          create={RoomCreate}
+          show={RoomShow}
         />
       </Admin>
     </div>

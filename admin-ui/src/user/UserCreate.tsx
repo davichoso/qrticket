@@ -24,6 +24,8 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
           optionText="label"
           optionValue="value"
         />
+        <TextInput label="testfield1" source="testfield1" />
+        <TextInput label="testfield2" source="testfield2" />
         <TextInput label="Username" source="username" />
       </SimpleForm>
     </Create>

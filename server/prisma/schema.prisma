@@ -8,12 +8,37 @@ generator client {
 }
 
 model User {
+  createdAt  DateTime @default(now())
+  firstName  String?
+  id         String   @id @default(cuid())
+  lastName   String?
+  password   String
+  roles      String[]
+  testfield1 String?
+  testfield2 String?
+  updatedAt  DateTime @updatedAt
+  username   String   @unique
+}
+
+model Qr {
+  code      String   @unique
   createdAt DateTime @default(now())
-  firstName String?
   id        String   @id @default(cuid())
-  lastName  String?
-  password  String
-  roles     String[]
   updatedAt DateTime @updatedAt
-  username  String   @unique
+  used      Boolean
+}
+
+model Event {
+  closeAt   DateTime
+  createdAt DateTime  @default(now())
+  id        String    @id @default(cuid())
+  openAt    DateTime
+  title     DateTime?
+  updatedAt DateTime  @updatedAt
+}
+
+model Room {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
 }
