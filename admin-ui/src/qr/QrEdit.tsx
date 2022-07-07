@@ -12,6 +12,7 @@ export const QrEdit = (props: EditProps): React.ReactElement => {
     <Edit {...props}>
       <SimpleForm>
         <TextInput label="code" source="code" />
+        <TextInput label="test" source="test" />
         <BooleanInput label="used" source="used" />
       </SimpleForm>
     </Edit>

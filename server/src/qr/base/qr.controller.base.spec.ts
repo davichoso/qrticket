@@ -14,6 +14,7 @@ const CREATE_INPUT = {
   code: "exampleCode",
   createdAt: new Date(),
   id: "exampleId",
+  test: "exampleTest",
   updatedAt: new Date(),
   used: "true",
 };
@@ -21,6 +22,7 @@ const CREATE_RESULT = {
   code: "exampleCode",
   createdAt: new Date(),
   id: "exampleId",
+  test: "exampleTest",
   updatedAt: new Date(),
   used: "true",
 };
@@ -29,6 +31,7 @@ const FIND_MANY_RESULT = [
     code: "exampleCode",
     createdAt: new Date(),
     id: "exampleId",
+    test: "exampleTest",
     updatedAt: new Date(),
     used: "true",
   },
@@ -37,6 +40,7 @@ const FIND_ONE_RESULT = {
   code: "exampleCode",
   createdAt: new Date(),
   id: "exampleId",
+  test: "exampleTest",
   updatedAt: new Date(),
   used: "true",
 };
