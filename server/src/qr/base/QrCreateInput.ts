@@ -11,7 +11,7 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsBoolean } from "class-validator";
+import { IsString, IsOptional, IsBoolean } from "class-validator";
 @InputType()
 class QrCreateInput {
   @ApiProperty({
@@ -21,6 +21,17 @@ class QrCreateInput {
   @IsString()
   @Field(() => String)
   code!: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  test?: string | null;
 
   @ApiProperty({
     required: true,

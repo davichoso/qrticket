@@ -15,6 +15,7 @@ export const QrShow = (props: ShowProps): React.ReactElement => {
         <TextField label="code" source="code" />
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
+        <TextField label="test" source="test" />
         <DateField source="updatedAt" label="Updated At" />
         <BooleanField label="used" source="used" />
       </SimpleShowLayout>

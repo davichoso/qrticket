@@ -12,6 +12,7 @@ export const QrCreate = (props: CreateProps): React.ReactElement => {
     <Create {...props}>
       <SimpleForm>
         <TextInput label="code" source="code" />
+        <TextInput label="test" source="test" />
         <BooleanInput label="used" source="used" />
       </SimpleForm>
     </Create>
