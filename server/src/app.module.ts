@@ -5,6 +5,8 @@ import { UserModule } from "./user/user.module";
 import { QrModule } from "./qr/qr.module";
 import { EventModule } from "./event/event.module";
 import { RoomModule } from "./room/room.module";
+import { PhotoModule } from "./photo/photo.module";
+import { PromotionModule } from "./promotion/promotion.module";
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
 import { HealthModule } from "./health/health.module";
@@ -21,6 +23,8 @@ import { GraphQLModule } from "@nestjs/graphql";
     QrModule,
     EventModule,
     RoomModule,
+    PhotoModule,
+    PromotionModule,
     ACLModule,
     AuthModule,
     HealthModule,
