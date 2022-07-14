@@ -42,3 +42,21 @@ model Room {
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
 }
+
+model Photo {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  src       String?
+  updatedAt DateTime @updatedAt
+}
+
+model Promotion {
+  createdAt   DateTime  @default(now())
+  descripciN  String?
+  fechaFin    DateTime?
+  fechaInicio DateTime?
+  id          String    @id @default(cuid())
+  imagen      String?
+  Nombre      String?
+  updatedAt   DateTime  @updatedAt
+}

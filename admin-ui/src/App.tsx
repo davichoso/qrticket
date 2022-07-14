@@ -21,6 +21,14 @@ import { RoomList } from "./room/RoomList";
 import { RoomCreate } from "./room/RoomCreate";
 import { RoomEdit } from "./room/RoomEdit";
 import { RoomShow } from "./room/RoomShow";
+import { PhotoList } from "./photo/PhotoList";
+import { PhotoCreate } from "./photo/PhotoCreate";
+import { PhotoEdit } from "./photo/PhotoEdit";
+import { PhotoShow } from "./photo/PhotoShow";
+import { PromotionList } from "./promotion/PromotionList";
+import { PromotionCreate } from "./promotion/PromotionCreate";
+import { PromotionEdit } from "./promotion/PromotionEdit";
+import { PromotionShow } from "./promotion/PromotionShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -40,7 +48,7 @@ const App = (): React.ReactElement => {
   return (
     <div className="App">
       <Admin
-        title={"My app"}
+        title={"QrTicket"}
         dataProvider={dataProvider}
         authProvider={jwtAuthProvider}
         theme={theme}
@@ -74,6 +82,20 @@ const App = (): React.ReactElement => {
           edit={RoomEdit}
           create={RoomCreate}
           show={RoomShow}
+        />
+        <Resource
+          name="Photo"
+          list={PhotoList}
+          edit={PhotoEdit}
+          create={PhotoCreate}
+          show={PhotoShow}
+        />
+        <Resource
+          name="Promotion"
+          list={PromotionList}
+          edit={PromotionEdit}
+          create={PromotionCreate}
+          show={PromotionShow}
         />
       </Admin>
     </div>
