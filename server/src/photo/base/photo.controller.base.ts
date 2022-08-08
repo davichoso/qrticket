@@ -51,6 +51,7 @@ export class PhotoControllerBase {
         createdAt: true,
         id: true,
         src: true,
+        titulo: true,
         updatedAt: true,
       },
     });
@@ -74,6 +75,7 @@ export class PhotoControllerBase {
         createdAt: true,
         id: true,
         src: true,
+        titulo: true,
         updatedAt: true,
       },
     });
@@ -98,6 +100,7 @@ export class PhotoControllerBase {
         createdAt: true,
         id: true,
         src: true,
+        titulo: true,
         updatedAt: true,
       },
     });
@@ -131,6 +134,7 @@ export class PhotoControllerBase {
           createdAt: true,
           id: true,
           src: true,
+          titulo: true,
           updatedAt: true,
         },
       });
@@ -163,6 +167,7 @@ export class PhotoControllerBase {
           createdAt: true,
           id: true,
           src: true,
+          titulo: true,
           updatedAt: true,
         },
       });

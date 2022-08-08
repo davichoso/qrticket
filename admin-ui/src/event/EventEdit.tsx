@@ -1,5 +1,11 @@
 import * as React from "react";
-import { Edit, SimpleForm, EditProps, DateTimeInput } from "react-admin";
+import {
+  Edit,
+  SimpleForm,
+  EditProps,
+  DateTimeInput,
+  TextInput,
+} from "react-admin";
 
 export const EventEdit = (props: EditProps): React.ReactElement => {
   return (
@@ -7,7 +13,7 @@ export const EventEdit = (props: EditProps): React.ReactElement => {
       <SimpleForm>
         <DateTimeInput label="CloseAt" source="closeAt" />
         <DateTimeInput label="OpenAt" source="openAt" />
-        <DateTimeInput label="Title" source="title" />
+        <TextInput label="Titulo" source="titulo" />
       </SimpleForm>
     </Edit>
   );

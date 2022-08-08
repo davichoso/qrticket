@@ -49,14 +49,14 @@ class Event {
 
   @ApiProperty({
     required: false,
+    type: String,
   })
-  @IsDate()
-  @Type(() => Date)
+  @IsString()
   @IsOptional()
-  @Field(() => Date, {
+  @Field(() => String, {
     nullable: true,
   })
-  title!: Date | null;
+  titulo!: string | null;
 
   @ApiProperty({
     required: true,

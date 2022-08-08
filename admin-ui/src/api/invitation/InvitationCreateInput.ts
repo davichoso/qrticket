@@ -1,1 +1,3 @@
-export type InvitationCreateInput = {};
+export type InvitationCreateInput = {
+  userId?: string | null;
+};

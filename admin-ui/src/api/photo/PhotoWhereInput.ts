@@ -4,4 +4,5 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 export type PhotoWhereInput = {
   id?: StringFilter;
   src?: StringNullableFilter;
+  titulo?: StringNullableFilter;
 };

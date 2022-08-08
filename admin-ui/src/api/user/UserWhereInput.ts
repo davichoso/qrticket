@@ -13,5 +13,6 @@ export type UserWhereInput = {
     | "Melodico";
   id?: StringFilter;
   lastName?: StringNullableFilter;
+  qrId?: StringNullableFilter;
   username?: StringFilter;
 };

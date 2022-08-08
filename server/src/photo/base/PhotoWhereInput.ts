@@ -38,5 +38,16 @@ class PhotoWhereInput {
     nullable: true,
   })
   src?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  titulo?: StringNullableFilter;
 }
 export { PhotoWhereInput };
