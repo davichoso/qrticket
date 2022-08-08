@@ -11,6 +11,7 @@ export type UserUpdateInput = {
     | null;
   lastName?: string | null;
   password?: string;
+  qrId?: string | null;
   roles?: Array<string>;
   username?: string;
 };

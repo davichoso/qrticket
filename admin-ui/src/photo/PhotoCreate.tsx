@@ -6,6 +6,7 @@ export const PhotoCreate = (props: CreateProps): React.ReactElement => {
     <Create {...props}>
       <SimpleForm>
         <TextInput label="src" source="src" />
+        <TextInput label="Titulo" source="titulo" />
       </SimpleForm>
     </Create>
   );

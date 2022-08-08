@@ -8,6 +8,7 @@ import { RoomModule } from "./room/room.module";
 import { PhotoModule } from "./photo/photo.module";
 import { PromotionModule } from "./promotion/promotion.module";
 import { InvitationModule } from "./invitation/invitation.module";
+import { NotificationModule } from "./notification/notification.module";
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
 import { HealthModule } from "./health/health.module";
@@ -27,6 +28,7 @@ import { GraphQLModule } from "@nestjs/graphql";
     PhotoModule,
     PromotionModule,
     InvitationModule,
+    NotificationModule,
     ACLModule,
     AuthModule,
     HealthModule,

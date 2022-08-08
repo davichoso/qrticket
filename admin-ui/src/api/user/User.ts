@@ -12,6 +12,7 @@ export type User = {
     | null;
   id: string;
   lastName: string | null;
+  qrId: string | null;
   roles: Array<string>;
   updatedAt: Date;
   username: string;

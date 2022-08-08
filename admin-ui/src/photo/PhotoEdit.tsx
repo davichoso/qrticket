@@ -6,6 +6,7 @@ export const PhotoEdit = (props: EditProps): React.ReactElement => {
     <Edit {...props}>
       <SimpleForm>
         <TextInput label="src" source="src" />
+        <TextInput label="Titulo" source="titulo" />
       </SimpleForm>
     </Edit>
   );

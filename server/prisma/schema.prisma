@@ -15,6 +15,7 @@ model User {
   id        String         @id @default(cuid())
   lastName  String?
   password  String
+  qrId      String?
   roles     String[]
   updatedAt DateTime       @updatedAt
   username  String         @unique
@@ -30,11 +31,11 @@ model Qr {
 
 model Event {
   closeAt   DateTime
-  createdAt DateTime  @default(now())
-  id        String    @id @default(cuid())
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
   openAt    DateTime
-  title     DateTime?
-  updatedAt DateTime  @updatedAt
+  titulo    String?
+  updatedAt DateTime @updatedAt
 }
 
 model Room {
@@ -47,6 +48,7 @@ model Photo {
   createdAt DateTime @default(now())
   id        String   @id @default(cuid())
   src       String?
+  titulo    String?
   updatedAt DateTime @updatedAt
 }
 
@@ -64,6 +66,15 @@ model Promotion {
 model Invitation {
   createdAt DateTime @default(now())
   id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+  userId    String?
+}
+
+model Notification {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  texto     String?
+  titulo    String?
   updatedAt DateTime @updatedAt
 }
 

@@ -43,6 +43,17 @@ class Photo {
   src!: string | null;
 
   @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  titulo!: string | null;
+
+  @ApiProperty({
     required: true,
   })
   @IsDate()
