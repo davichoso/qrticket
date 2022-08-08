@@ -40,7 +40,8 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
         <ReferenceInput source="qr.id" reference="Qr" label="qr">
           <SelectInput optionText={QrTitle} />
         </ReferenceInput>
-        <TextInput label="qr_id" source="qrId" />
+        <TextInput label="qr_idx" source="qrId" />
+        <TextInput label="qrtxt" source="qrtxt" />
         <SelectArrayInput
           source="roles"
           choices={ROLES_OPTIONS}

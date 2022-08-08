@@ -18,6 +18,7 @@ model User {
   qr        Qr?            @relation(fields: [qrId], references: [id])
   qrId      String?
   qrId      String?
+  qrtxt     String?
   roles     String[]
   updatedAt DateTime       @updatedAt
   username  String         @unique

@@ -70,6 +70,7 @@ export class UserControllerBase {
         },
 
         qrId: true,
+        qrtxt: true,
         roles: true,
         updatedAt: true,
         username: true,
@@ -106,6 +107,7 @@ export class UserControllerBase {
         },
 
         qrId: true,
+        qrtxt: true,
         roles: true,
         updatedAt: true,
         username: true,
@@ -143,6 +145,7 @@ export class UserControllerBase {
         },
 
         qrId: true,
+        qrtxt: true,
         roles: true,
         updatedAt: true,
         username: true,
@@ -197,6 +200,7 @@ export class UserControllerBase {
           },
 
           qrId: true,
+          qrtxt: true,
           roles: true,
           updatedAt: true,
           username: true,
@@ -242,6 +246,7 @@ export class UserControllerBase {
           },
 
           qrId: true,
+          qrtxt: true,
           roles: true,
           updatedAt: true,
           username: true,

@@ -212,6 +212,7 @@ export class QrControllerBase {
         },
 
         qrId: true,
+        qrtxt: true,
         roles: true,
         updatedAt: true,
         username: true,

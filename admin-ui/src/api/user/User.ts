@@ -16,6 +16,7 @@ export type User = {
   lastName: string | null;
   qr?: Qr | null;
   qrId: string | null;
+  qrtxt: string | null;
   roles: Array<string>;
   updatedAt: Date;
   username: string;
