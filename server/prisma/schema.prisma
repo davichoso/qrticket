@@ -8,16 +8,16 @@ generator client {
 }
 
 model User {
-  createdAt DateTime @default(now())
+  createdAt DateTime       @default(now())
+  email     String?
   firstName String?
-  id        String   @id @default(cuid())
+  gusto     EnumUserGusto?
+  id        String         @id @default(cuid())
   lastName  String?
   password  String
-  qr        Qr?      @relation(fields: [qrId], references: [id])
-  qrId      String?
   roles     String[]
-  updatedAt DateTime @updatedAt
-  username  String   @unique
+  updatedAt DateTime       @updatedAt
+  username  String         @unique
 }
 
 model Qr {
@@ -26,7 +26,6 @@ model Qr {
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
   used      Boolean
-  users     User[]
 }
 
 model Event {
@@ -66,4 +65,13 @@ model Invitation {
   createdAt DateTime @default(now())
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
+}
+
+enum EnumUserGusto {
+  House
+  TechHouse
+  Techno
+  HardTechno
+  Comercial
+  Melodico
 }
