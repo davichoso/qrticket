@@ -10,7 +10,7 @@ https://docs.amplication.com/docs/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "nestjs-prisma";
-import { Prisma, Qr, User } from "@prisma/client";
+import { Prisma, Qr } from "@prisma/client";
 
 export class QrServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -45,16 +45,5 @@ export class QrServiceBase {
     args: Prisma.SelectSubset<T, Prisma.QrDeleteArgs>
   ): Promise<Qr> {
     return this.prisma.qr.delete(args);
-  }
-
-  async findUsers(
-    parentId: string,
-    args: Prisma.UserFindManyArgs
-  ): Promise<User[]> {
-    return this.prisma.qr
-      .findUnique({
-        where: { id: parentId },
-      })
-      .users(args);
   }
 }
