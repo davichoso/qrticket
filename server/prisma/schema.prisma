@@ -67,6 +67,14 @@ model Invitation {
   updatedAt DateTime @updatedAt
 }
 
+model Notification {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  texto     String?
+  titulo    String?
+  updatedAt DateTime @updatedAt
+}
+
 enum EnumUserGusto {
   House
   TechHouse
