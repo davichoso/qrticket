@@ -52,7 +52,7 @@ export class EventControllerBase {
         createdAt: true,
         id: true,
         openAt: true,
-        title: true,
+        titulo: true,
         updatedAt: true,
       },
     });
@@ -77,7 +77,7 @@ export class EventControllerBase {
         createdAt: true,
         id: true,
         openAt: true,
-        title: true,
+        titulo: true,
         updatedAt: true,
       },
     });
@@ -103,7 +103,7 @@ export class EventControllerBase {
         createdAt: true,
         id: true,
         openAt: true,
-        title: true,
+        titulo: true,
         updatedAt: true,
       },
     });
@@ -138,7 +138,7 @@ export class EventControllerBase {
           createdAt: true,
           id: true,
           openAt: true,
-          title: true,
+          titulo: true,
           updatedAt: true,
         },
       });
@@ -172,7 +172,7 @@ export class EventControllerBase {
           createdAt: true,
           id: true,
           openAt: true,
-          title: true,
+          titulo: true,
           updatedAt: true,
         },
       });

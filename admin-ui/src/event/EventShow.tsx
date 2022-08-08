@@ -15,7 +15,7 @@ export const EventShow = (props: ShowProps): React.ReactElement => {
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
         <TextField label="OpenAt" source="openAt" />
-        <TextField label="Title" source="title" />
+        <TextField label="Titulo" source="titulo" />
         <DateField source="updatedAt" label="Updated At" />
       </SimpleShowLayout>
     </Show>

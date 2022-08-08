@@ -24,5 +24,16 @@ class PhotoCreateInput {
     nullable: true,
   })
   src?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  titulo?: string | null;
 }
 export { PhotoCreateInput };

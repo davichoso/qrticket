@@ -61,7 +61,7 @@ class EventOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  title?: SortOrder;
+  titulo?: SortOrder;
 
   @ApiProperty({
     required: false,

@@ -18,6 +18,9 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { CreateInvitationArgs } from "./CreateInvitationArgs";
+import { UpdateInvitationArgs } from "./UpdateInvitationArgs";
 import { DeleteInvitationArgs } from "./DeleteInvitationArgs";
 import { InvitationFindManyArgs } from "./InvitationFindManyArgs";
 import { InvitationFindUniqueArgs } from "./InvitationFindUniqueArgs";
@@ -79,6 +82,47 @@ export class InvitationResolverBase {
       return null;
     }
     return result;
+  }
+
+  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @graphql.Mutation(() => Invitation)
+  @nestAccessControl.UseRoles({
+    resource: "Invitation",
+    action: "create",
+    possession: "any",
+  })
+  async createInvitation(
+    @graphql.Args() args: CreateInvitationArgs
+  ): Promise<Invitation> {
+    return await this.service.create({
+      ...args,
+      data: args.data,
+    });
+  }
+
+  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @graphql.Mutation(() => Invitation)
+  @nestAccessControl.UseRoles({
+    resource: "Invitation",
+    action: "update",
+    possession: "any",
+  })
+  async updateInvitation(
+    @graphql.Args() args: UpdateInvitationArgs
+  ): Promise<Invitation | null> {
+    try {
+      return await this.service.update({
+        ...args,
+        data: args.data,
+      });
+    } catch (error) {
+      if (isRecordNotFoundError(error)) {
+        throw new apollo.ApolloError(
+          `No resource was found for ${JSON.stringify(args.where)}`
+        );
+      }
+      throw error;
+    }
   }
 
   @graphql.Mutation(() => Invitation)

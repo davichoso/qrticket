@@ -15,6 +15,7 @@ export const PhotoList = (props: ListProps): React.ReactElement => {
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
         <TextField label="src" source="src" />
+        <TextField label="Titulo" source="titulo" />
         <DateField source="updatedAt" label="Updated At" />
       </Datagrid>
     </List>

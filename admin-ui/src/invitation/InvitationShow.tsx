@@ -14,6 +14,7 @@ export const InvitationShow = (props: ShowProps): React.ReactElement => {
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
         <DateField source="updatedAt" label="Updated At" />
+        <TextField label="user_id" source="userId" />
       </SimpleShowLayout>
     </Show>
   );

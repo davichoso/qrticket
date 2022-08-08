@@ -5,6 +5,6 @@ export type EventOrderByInput = {
   createdAt?: SortOrder;
   id?: SortOrder;
   openAt?: SortOrder;
-  title?: SortOrder;
+  titulo?: SortOrder;
   updatedAt?: SortOrder;
 };
