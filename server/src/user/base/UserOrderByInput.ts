@@ -88,16 +88,7 @@ class UserOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  qrId?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
-  qrId?: SortOrder;
+  qrid?: SortOrder;
 
   @ApiProperty({
     required: false,

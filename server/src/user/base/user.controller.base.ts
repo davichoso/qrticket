@@ -46,15 +46,7 @@ export class UserControllerBase {
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
   async create(@common.Body() data: UserCreateInput): Promise<User> {
     return await this.service.create({
-      data: {
-        ...data,
-
-        qr: data.qr
-          ? {
-              connect: data.qr,
-            }
-          : undefined,
-      },
+      data: data,
       select: {
         createdAt: true,
         email: true,
@@ -62,14 +54,7 @@ export class UserControllerBase {
         gusto: true,
         id: true,
         lastName: true,
-
-        qr: {
-          select: {
-            id: true,
-          },
-        },
-
-        qrId: true,
+        qrid: true,
         qrtxt: true,
         roles: true,
         updatedAt: true,
@@ -99,14 +84,7 @@ export class UserControllerBase {
         gusto: true,
         id: true,
         lastName: true,
-
-        qr: {
-          select: {
-            id: true,
-          },
-        },
-
-        qrId: true,
+        qrid: true,
         qrtxt: true,
         roles: true,
         updatedAt: true,
@@ -137,14 +115,7 @@ export class UserControllerBase {
         gusto: true,
         id: true,
         lastName: true,
-
-        qr: {
-          select: {
-            id: true,
-          },
-        },
-
-        qrId: true,
+        qrid: true,
         qrtxt: true,
         roles: true,
         updatedAt: true,
@@ -176,15 +147,7 @@ export class UserControllerBase {
     try {
       return await this.service.update({
         where: params,
-        data: {
-          ...data,
-
-          qr: data.qr
-            ? {
-                connect: data.qr,
-              }
-            : undefined,
-        },
+        data: data,
         select: {
           createdAt: true,
           email: true,
@@ -192,14 +155,7 @@ export class UserControllerBase {
           gusto: true,
           id: true,
           lastName: true,
-
-          qr: {
-            select: {
-              id: true,
-            },
-          },
-
-          qrId: true,
+          qrid: true,
           qrtxt: true,
           roles: true,
           updatedAt: true,
@@ -238,14 +194,7 @@ export class UserControllerBase {
           gusto: true,
           id: true,
           lastName: true,
-
-          qr: {
-            select: {
-              id: true,
-            },
-          },
-
-          qrId: true,
+          qrid: true,
           qrtxt: true,
           roles: true,
           updatedAt: true,

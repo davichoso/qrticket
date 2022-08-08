@@ -1,5 +1,3 @@
-import { Qr } from "../qr/Qr";
-
 export type User = {
   createdAt: Date;
   email: string | null;
@@ -14,8 +12,7 @@ export type User = {
     | null;
   id: string;
   lastName: string | null;
-  qr?: Qr | null;
-  qrId: string | null;
+  qrid: string | null;
   qrtxt: string | null;
   roles: Array<string>;
   updatedAt: Date;

@@ -7,11 +7,9 @@ import {
   TextInput,
   SelectInput,
   PasswordInput,
-  ReferenceInput,
   SelectArrayInput,
 } from "react-admin";
 
-import { QrTitle } from "../qr/QrTitle";
 import { ROLES_OPTIONS } from "../user/RolesOptions";
 
 export const UserCreate = (props: CreateProps): React.ReactElement => {
@@ -37,10 +35,7 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
         />
         <TextInput label="Last Name" source="lastName" />
         <PasswordInput label="Password" source="password" />
-        <ReferenceInput source="qr.id" reference="Qr" label="qr">
-          <SelectInput optionText={QrTitle} />
-        </ReferenceInput>
-        <TextInput label="qr_idx" source="qrId" />
+        <TextInput label="qrid" source="qrid" />
         <TextInput label="qrtxt" source="qrtxt" />
         <SelectArrayInput
           source="roles"
