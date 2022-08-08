@@ -27,6 +27,9 @@ import { QrWhereUniqueInput } from "./QrWhereUniqueInput";
 import { QrFindManyArgs } from "./QrFindManyArgs";
 import { QrUpdateInput } from "./QrUpdateInput";
 import { Qr } from "./Qr";
+import { UserFindManyArgs } from "../../user/base/UserFindManyArgs";
+import { User } from "../../user/base/User";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
 export class QrControllerBase {
@@ -177,5 +180,111 @@ export class QrControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
+  @common.Get("/:id/users")
+  @ApiNestedQuery(UserFindManyArgs)
+  async findManyUsers(
+    @common.Req() request: Request,
+    @common.Param() params: QrWhereUniqueInput
+  ): Promise<User[]> {
+    const query = plainToClass(UserFindManyArgs, request.query);
+    const results = await this.service.findUsers(params.id, {
+      ...query,
+      select: {
+        createdAt: true,
+        firstName: true,
+        id: true,
+        lastName: true,
+
+        qr: {
+          select: {
+            id: true,
+          },
+        },
+
+        roles: true,
+        updatedAt: true,
+        username: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @nestAccessControl.UseRoles({
+    resource: "Qr",
+    action: "update",
+    possession: "any",
+  })
+  @common.Post("/:id/users")
+  async connectUsers(
+    @common.Param() params: QrWhereUniqueInput,
+    @common.Body() body: UserWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      users: {
+        connect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @nestAccessControl.UseRoles({
+    resource: "Qr",
+    action: "update",
+    possession: "any",
+  })
+  @common.Patch("/:id/users")
+  async updateUsers(
+    @common.Param() params: QrWhereUniqueInput,
+    @common.Body() body: UserWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      users: {
+        set: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @nestAccessControl.UseRoles({
+    resource: "Qr",
+    action: "update",
+    possession: "any",
+  })
+  @common.Delete("/:id/users")
+  async disconnectUsers(
+    @common.Param() params: QrWhereUniqueInput,
+    @common.Body() body: UserWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      users: {
+        disconnect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }
