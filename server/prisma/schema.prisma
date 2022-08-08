@@ -8,16 +8,16 @@ generator client {
 }
 
 model User {
-  createdAt  DateTime @default(now())
-  firstName  String?
-  id         String   @id @default(cuid())
-  lastName   String?
-  password   String
-  roles      String[]
-  testfield1 String?
-  testfield2 String?
-  updatedAt  DateTime @updatedAt
-  username   String   @unique
+  createdAt DateTime @default(now())
+  firstName String?
+  id        String   @id @default(cuid())
+  lastName  String?
+  password  String
+  qr        Qr?      @relation(fields: [qrId], references: [id])
+  qrId      String?
+  roles     String[]
+  updatedAt DateTime @updatedAt
+  username  String   @unique
 }
 
 model Qr {
@@ -26,6 +26,7 @@ model Qr {
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
   used      Boolean
+  users     User[]
 }
 
 model Event {
@@ -38,6 +39,30 @@ model Event {
 }
 
 model Room {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
+
+model Photo {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  src       String?
+  updatedAt DateTime @updatedAt
+}
+
+model Promotion {
+  createdAt   DateTime  @default(now())
+  descripciN  String?
+  fechaFin    DateTime?
+  fechaInicio DateTime?
+  id          String    @id @default(cuid())
+  imagen      String?
+  Nombre      String?
+  updatedAt   DateTime  @updatedAt
+}
+
+model Invitation {
   createdAt DateTime @default(now())
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
