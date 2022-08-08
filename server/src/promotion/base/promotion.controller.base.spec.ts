@@ -5,52 +5,52 @@ import { MorganModule } from "nest-morgan";
 import { ACGuard } from "nest-access-control";
 import { DefaultAuthGuard } from "../../auth/defaultAuth.guard";
 import { ACLModule } from "../../auth/acl.module";
-import { UserController } from "../user.controller";
-import { UserService } from "../user.service";
+import { PromotionController } from "../promotion.controller";
+import { PromotionService } from "../promotion.service";
 
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
   createdAt: new Date(),
-  firstName: "exampleFirstName",
+  descripciN: "exampleDescripciN",
+  fechaFin: new Date(),
+  fechaInicio: new Date(),
   id: "exampleId",
-  lastName: "exampleLastName",
-  password: "examplePassword",
-  roles: ["exampleRoles"],
+  imagen: "exampleImagen",
+  Nombre: "exampleNombre",
   updatedAt: new Date(),
-  username: "exampleUsername",
 };
 const CREATE_RESULT = {
   createdAt: new Date(),
-  firstName: "exampleFirstName",
+  descripciN: "exampleDescripciN",
+  fechaFin: new Date(),
+  fechaInicio: new Date(),
   id: "exampleId",
-  lastName: "exampleLastName",
-  password: "examplePassword",
-  roles: ["exampleRoles"],
+  imagen: "exampleImagen",
+  Nombre: "exampleNombre",
   updatedAt: new Date(),
-  username: "exampleUsername",
 };
 const FIND_MANY_RESULT = [
   {
     createdAt: new Date(),
-    firstName: "exampleFirstName",
+    descripciN: "exampleDescripciN",
+    fechaFin: new Date(),
+    fechaInicio: new Date(),
     id: "exampleId",
-    lastName: "exampleLastName",
-    password: "examplePassword",
-    roles: ["exampleRoles"],
+    imagen: "exampleImagen",
+    Nombre: "exampleNombre",
     updatedAt: new Date(),
-    username: "exampleUsername",
   },
 ];
 const FIND_ONE_RESULT = {
   createdAt: new Date(),
-  firstName: "exampleFirstName",
+  descripciN: "exampleDescripciN",
+  fechaFin: new Date(),
+  fechaInicio: new Date(),
   id: "exampleId",
-  lastName: "exampleLastName",
-  password: "examplePassword",
-  roles: ["exampleRoles"],
+  imagen: "exampleImagen",
+  Nombre: "exampleNombre",
   updatedAt: new Date(),
-  username: "exampleUsername",
 };
 
 const service = {
@@ -85,18 +85,18 @@ const acGuard = {
   },
 };
 
-describe("User", () => {
+describe("Promotion", () => {
   let app: INestApplication;
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       providers: [
         {
-          provide: UserService,
+          provide: PromotionService,
           useValue: service,
         },
       ],
-      controllers: [UserController],
+      controllers: [PromotionController],
       imports: [MorganModule.forRoot(), ACLModule],
     })
       .overrideGuard(DefaultAuthGuard)
@@ -109,34 +109,38 @@ describe("User", () => {
     await app.init();
   });
 
-  test("POST /users", async () => {
+  test("POST /promotions", async () => {
     await request(app.getHttpServer())
-      .post("/users")
+      .post("/promotions")
       .send(CREATE_INPUT)
       .expect(HttpStatus.CREATED)
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        fechaFin: CREATE_RESULT.fechaFin.toISOString(),
+        fechaInicio: CREATE_RESULT.fechaInicio.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       });
   });
 
-  test("GET /users", async () => {
+  test("GET /promotions", async () => {
     await request(app.getHttpServer())
-      .get("/users")
+      .get("/promotions")
       .expect(HttpStatus.OK)
       .expect([
         {
           ...FIND_MANY_RESULT[0],
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
+          fechaFin: FIND_MANY_RESULT[0].fechaFin.toISOString(),
+          fechaInicio: FIND_MANY_RESULT[0].fechaInicio.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
         },
       ]);
   });
 
-  test("GET /users/:id non existing", async () => {
+  test("GET /promotions/:id non existing", async () => {
     await request(app.getHttpServer())
-      .get(`${"/users"}/${nonExistingId}`)
+      .get(`${"/promotions"}/${nonExistingId}`)
       .expect(HttpStatus.NOT_FOUND)
       .expect({
         statusCode: HttpStatus.NOT_FOUND,
@@ -145,13 +149,15 @@ describe("User", () => {
       });
   });
 
-  test("GET /users/:id existing", async () => {
+  test("GET /promotions/:id existing", async () => {
     await request(app.getHttpServer())
-      .get(`${"/users"}/${existingId}`)
+      .get(`${"/promotions"}/${existingId}`)
       .expect(HttpStatus.OK)
       .expect({
         ...FIND_ONE_RESULT,
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
+        fechaFin: FIND_ONE_RESULT.fechaFin.toISOString(),
+        fechaInicio: FIND_ONE_RESULT.fechaInicio.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
       });
   });
