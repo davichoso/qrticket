@@ -16,5 +16,6 @@ export type UserWhereInput = {
   lastName?: StringNullableFilter;
   qr?: QrWhereUniqueInput;
   qrId?: StringNullableFilter;
+  qrtxt?: StringNullableFilter;
   username?: StringFilter;
 };

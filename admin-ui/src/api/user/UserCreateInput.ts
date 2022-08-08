@@ -15,6 +15,7 @@ export type UserCreateInput = {
   password: string;
   qr?: QrWhereUniqueInput | null;
   qrId?: string | null;
+  qrtxt?: string | null;
   roles: Array<string>;
   username: string;
 };

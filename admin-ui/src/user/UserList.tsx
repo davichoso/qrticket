@@ -29,7 +29,8 @@ export const UserList = (props: ListProps): React.ReactElement => {
         <ReferenceField label="qr" source="qr.id" reference="Qr">
           <TextField source={QR_TITLE_FIELD} />
         </ReferenceField>
-        <TextField label="qr_id" source="qrId" />
+        <TextField label="qr_idx" source="qrId" />
+        <TextField label="qrtxt" source="qrtxt" />
         <TextField label="Roles" source="roles" />
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="Username" source="username" />
