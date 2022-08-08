@@ -11,7 +11,9 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional } from "class-validator";
+import { IsString, IsOptional, ValidateNested } from "class-validator";
+import { QrWhereUniqueInput } from "../../qr/base/QrWhereUniqueInput";
+import { Type } from "class-transformer";
 @InputType()
 class UserUpdateInput {
   @ApiProperty({
@@ -49,6 +51,18 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => QrWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => QrWhereUniqueInput)
+  @IsOptional()
+  @Field(() => QrWhereUniqueInput, {
+    nullable: true,
+  })
+  qr?: QrWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
     type: [String],
   })
   @IsString({
@@ -59,28 +73,6 @@ class UserUpdateInput {
     nullable: true,
   })
   roles?: Array<string>;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  testfield1?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  testfield2?: string | null;
 
   @ApiProperty({
     required: false,

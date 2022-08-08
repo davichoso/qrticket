@@ -1,6 +1,14 @@
 import * as React from "react";
-import { List, Datagrid, ListProps, DateField, TextField } from "react-admin";
+import {
+  List,
+  Datagrid,
+  ListProps,
+  DateField,
+  TextField,
+  ReferenceField,
+} from "react-admin";
 import Pagination from "../Components/Pagination";
+import { QR_TITLE_FIELD } from "../qr/QrTitle";
 
 export const UserList = (props: ListProps): React.ReactElement => {
   return (
@@ -16,9 +24,10 @@ export const UserList = (props: ListProps): React.ReactElement => {
         <TextField label="First Name" source="firstName" />
         <TextField label="ID" source="id" />
         <TextField label="Last Name" source="lastName" />
+        <ReferenceField label="qr" source="qr.id" reference="Qr">
+          <TextField source={QR_TITLE_FIELD} />
+        </ReferenceField>
         <TextField label="Roles" source="roles" />
-        <TextField label="testfield1" source="testfield1" />
-        <TextField label="testfield2" source="testfield2" />
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="Username" source="username" />
       </Datagrid>

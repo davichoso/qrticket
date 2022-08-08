@@ -11,8 +11,9 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsString, IsOptional } from "class-validator";
+import { IsDate, IsString, IsOptional, ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
+import { Qr } from "../../qr/base/Qr";
 @ObjectType()
 class User {
   @ApiProperty({
@@ -54,6 +55,15 @@ class User {
   lastName!: string | null;
 
   @ApiProperty({
+    required: false,
+    type: () => Qr,
+  })
+  @ValidateNested()
+  @Type(() => Qr)
+  @IsOptional()
+  qr?: Qr | null;
+
+  @ApiProperty({
     required: true,
     type: [String],
   })
@@ -62,28 +72,6 @@ class User {
   })
   @Field(() => [String])
   roles!: Array<string>;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  testfield1!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  testfield2!: string | null;
 
   @ApiProperty({
     required: true,
