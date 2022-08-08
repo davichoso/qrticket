@@ -5,52 +5,32 @@ import { MorganModule } from "nest-morgan";
 import { ACGuard } from "nest-access-control";
 import { DefaultAuthGuard } from "../../auth/defaultAuth.guard";
 import { ACLModule } from "../../auth/acl.module";
-import { UserController } from "../user.controller";
-import { UserService } from "../user.service";
+import { InvitationController } from "../invitation.controller";
+import { InvitationService } from "../invitation.service";
 
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
   createdAt: new Date(),
-  firstName: "exampleFirstName",
   id: "exampleId",
-  lastName: "exampleLastName",
-  password: "examplePassword",
-  roles: ["exampleRoles"],
   updatedAt: new Date(),
-  username: "exampleUsername",
 };
 const CREATE_RESULT = {
   createdAt: new Date(),
-  firstName: "exampleFirstName",
   id: "exampleId",
-  lastName: "exampleLastName",
-  password: "examplePassword",
-  roles: ["exampleRoles"],
   updatedAt: new Date(),
-  username: "exampleUsername",
 };
 const FIND_MANY_RESULT = [
   {
     createdAt: new Date(),
-    firstName: "exampleFirstName",
     id: "exampleId",
-    lastName: "exampleLastName",
-    password: "examplePassword",
-    roles: ["exampleRoles"],
     updatedAt: new Date(),
-    username: "exampleUsername",
   },
 ];
 const FIND_ONE_RESULT = {
   createdAt: new Date(),
-  firstName: "exampleFirstName",
   id: "exampleId",
-  lastName: "exampleLastName",
-  password: "examplePassword",
-  roles: ["exampleRoles"],
   updatedAt: new Date(),
-  username: "exampleUsername",
 };
 
 const service = {
@@ -85,18 +65,18 @@ const acGuard = {
   },
 };
 
-describe("User", () => {
+describe("Invitation", () => {
   let app: INestApplication;
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       providers: [
         {
-          provide: UserService,
+          provide: InvitationService,
           useValue: service,
         },
       ],
-      controllers: [UserController],
+      controllers: [InvitationController],
       imports: [MorganModule.forRoot(), ACLModule],
     })
       .overrideGuard(DefaultAuthGuard)
@@ -109,9 +89,9 @@ describe("User", () => {
     await app.init();
   });
 
-  test("POST /users", async () => {
+  test("POST /invitations", async () => {
     await request(app.getHttpServer())
-      .post("/users")
+      .post("/invitations")
       .send(CREATE_INPUT)
       .expect(HttpStatus.CREATED)
       .expect({
@@ -121,9 +101,9 @@ describe("User", () => {
       });
   });
 
-  test("GET /users", async () => {
+  test("GET /invitations", async () => {
     await request(app.getHttpServer())
-      .get("/users")
+      .get("/invitations")
       .expect(HttpStatus.OK)
       .expect([
         {
@@ -134,9 +114,9 @@ describe("User", () => {
       ]);
   });
 
-  test("GET /users/:id non existing", async () => {
+  test("GET /invitations/:id non existing", async () => {
     await request(app.getHttpServer())
-      .get(`${"/users"}/${nonExistingId}`)
+      .get(`${"/invitations"}/${nonExistingId}`)
       .expect(HttpStatus.NOT_FOUND)
       .expect({
         statusCode: HttpStatus.NOT_FOUND,
@@ -145,9 +125,9 @@ describe("User", () => {
       });
   });
 
-  test("GET /users/:id existing", async () => {
+  test("GET /invitations/:id existing", async () => {
     await request(app.getHttpServer())
-      .get(`${"/users"}/${existingId}`)
+      .get(`${"/invitations"}/${existingId}`)
       .expect(HttpStatus.OK)
       .expect({
         ...FIND_ONE_RESULT,
