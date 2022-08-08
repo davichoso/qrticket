@@ -1,6 +1,5 @@
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
-import { QrWhereUniqueInput } from "../qr/QrWhereUniqueInput";
 
 export type UserWhereInput = {
   email?: StringNullableFilter;
@@ -14,8 +13,7 @@ export type UserWhereInput = {
     | "Melodico";
   id?: StringFilter;
   lastName?: StringNullableFilter;
-  qr?: QrWhereUniqueInput;
-  qrId?: StringNullableFilter;
+  qrid?: StringNullableFilter;
   qrtxt?: StringNullableFilter;
   username?: StringFilter;
 };

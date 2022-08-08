@@ -1,5 +1,3 @@
-import { QrWhereUniqueInput } from "../qr/QrWhereUniqueInput";
-
 export type UserUpdateInput = {
   email?: string | null;
   firstName?: string | null;
@@ -13,8 +11,7 @@ export type UserUpdateInput = {
     | null;
   lastName?: string | null;
   password?: string;
-  qr?: QrWhereUniqueInput | null;
-  qrId?: string | null;
+  qrid?: string | null;
   qrtxt?: string | null;
   roles?: Array<string>;
   username?: string;

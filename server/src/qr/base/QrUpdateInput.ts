@@ -11,14 +11,7 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import {
-  IsString,
-  IsOptional,
-  IsBoolean,
-  ValidateNested,
-} from "class-validator";
-import { UserUpdateManyWithoutQrsInput } from "./UserUpdateManyWithoutQrsInput";
-import { Type } from "class-transformer";
+import { IsString, IsOptional, IsBoolean } from "class-validator";
 @InputType()
 class QrUpdateInput {
   @ApiProperty({
@@ -42,17 +35,5 @@ class QrUpdateInput {
     nullable: true,
   })
   used?: boolean;
-
-  @ApiProperty({
-    required: false,
-    type: () => UserUpdateManyWithoutQrsInput,
-  })
-  @ValidateNested()
-  @Type(() => UserUpdateManyWithoutQrsInput)
-  @IsOptional()
-  @Field(() => UserUpdateManyWithoutQrsInput, {
-    nullable: true,
-  })
-  users?: UserUpdateManyWithoutQrsInput;
 }
 export { QrUpdateInput };

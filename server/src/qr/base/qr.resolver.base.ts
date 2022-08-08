@@ -25,8 +25,6 @@ import { DeleteQrArgs } from "./DeleteQrArgs";
 import { QrFindManyArgs } from "./QrFindManyArgs";
 import { QrFindUniqueArgs } from "./QrFindUniqueArgs";
 import { Qr } from "./Qr";
-import { UserFindManyArgs } from "../../user/base/UserFindManyArgs";
-import { User } from "../../user/base/User";
 import { QrService } from "../qr.service";
 
 @graphql.Resolver(() => Qr)
@@ -136,25 +134,5 @@ export class QrResolverBase {
       }
       throw error;
     }
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => [User])
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "any",
-  })
-  async users(
-    @graphql.Parent() parent: Qr,
-    @graphql.Args() args: UserFindManyArgs
-  ): Promise<User[]> {
-    const results = await this.service.findUsers(parent.id, args);
-
-    if (!results) {
-      return [];
-    }
-
-    return results;
   }
 }

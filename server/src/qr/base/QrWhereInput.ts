@@ -13,9 +13,8 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
+import { IsOptional } from "class-validator";
 import { BooleanFilter } from "../../util/BooleanFilter";
-import { UserListRelationFilter } from "../../user/base/UserListRelationFilter";
 @InputType()
 class QrWhereInput {
   @ApiProperty({
@@ -50,17 +49,5 @@ class QrWhereInput {
     nullable: true,
   })
   used?: BooleanFilter;
-
-  @ApiProperty({
-    required: false,
-    type: () => UserListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => UserListRelationFilter)
-  @IsOptional()
-  @Field(() => UserListRelationFilter, {
-    nullable: true,
-  })
-  users?: UserListRelationFilter;
 }
 export { QrWhereInput };
