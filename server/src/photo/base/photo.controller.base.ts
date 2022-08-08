@@ -18,102 +18,87 @@ import * as errors from "../../errors";
 import { Request } from "express";
 import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
-import { UserService } from "../user.service";
+import { PhotoService } from "../photo.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { UserCreateInput } from "./UserCreateInput";
-import { UserWhereInput } from "./UserWhereInput";
-import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
-import { UserFindManyArgs } from "./UserFindManyArgs";
-import { UserUpdateInput } from "./UserUpdateInput";
-import { User } from "./User";
+import { PhotoCreateInput } from "./PhotoCreateInput";
+import { PhotoWhereInput } from "./PhotoWhereInput";
+import { PhotoWhereUniqueInput } from "./PhotoWhereUniqueInput";
+import { PhotoFindManyArgs } from "./PhotoFindManyArgs";
+import { PhotoUpdateInput } from "./PhotoUpdateInput";
+import { Photo } from "./Photo";
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
-export class UserControllerBase {
+export class PhotoControllerBase {
   constructor(
-    protected readonly service: UserService,
+    protected readonly service: PhotoService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
   @common.UseInterceptors(AclValidateRequestInterceptor)
   @nestAccessControl.UseRoles({
-    resource: "User",
+    resource: "Photo",
     action: "create",
     possession: "any",
   })
   @common.Post()
-  @swagger.ApiCreatedResponse({ type: User })
+  @swagger.ApiCreatedResponse({ type: Photo })
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
-  async create(@common.Body() data: UserCreateInput): Promise<User> {
+  async create(@common.Body() data: PhotoCreateInput): Promise<Photo> {
     return await this.service.create({
       data: data,
       select: {
         createdAt: true,
-        email: true,
-        firstName: true,
-        gusto: true,
         id: true,
-        lastName: true,
-        roles: true,
+        src: true,
         updatedAt: true,
-        username: true,
       },
     });
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @nestAccessControl.UseRoles({
-    resource: "User",
+    resource: "Photo",
     action: "read",
     possession: "any",
   })
   @common.Get()
-  @swagger.ApiOkResponse({ type: [User] })
+  @swagger.ApiOkResponse({ type: [Photo] })
   @swagger.ApiForbiddenResponse()
-  @ApiNestedQuery(UserFindManyArgs)
-  async findMany(@common.Req() request: Request): Promise<User[]> {
-    const args = plainToClass(UserFindManyArgs, request.query);
+  @ApiNestedQuery(PhotoFindManyArgs)
+  async findMany(@common.Req() request: Request): Promise<Photo[]> {
+    const args = plainToClass(PhotoFindManyArgs, request.query);
     return this.service.findMany({
       ...args,
       select: {
         createdAt: true,
-        email: true,
-        firstName: true,
-        gusto: true,
         id: true,
-        lastName: true,
-        roles: true,
+        src: true,
         updatedAt: true,
-        username: true,
       },
     });
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @nestAccessControl.UseRoles({
-    resource: "User",
+    resource: "Photo",
     action: "read",
     possession: "own",
   })
   @common.Get("/:id")
-  @swagger.ApiOkResponse({ type: User })
+  @swagger.ApiOkResponse({ type: Photo })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
   async findOne(
-    @common.Param() params: UserWhereUniqueInput
-  ): Promise<User | null> {
+    @common.Param() params: PhotoWhereUniqueInput
+  ): Promise<Photo | null> {
     const result = await this.service.findOne({
       where: params,
       select: {
         createdAt: true,
-        email: true,
-        firstName: true,
-        gusto: true,
         id: true,
-        lastName: true,
-        roles: true,
+        src: true,
         updatedAt: true,
-        username: true,
       },
     });
     if (result === null) {
@@ -126,32 +111,27 @@ export class UserControllerBase {
 
   @common.UseInterceptors(AclValidateRequestInterceptor)
   @nestAccessControl.UseRoles({
-    resource: "User",
+    resource: "Photo",
     action: "update",
     possession: "any",
   })
   @common.Patch("/:id")
-  @swagger.ApiOkResponse({ type: User })
+  @swagger.ApiOkResponse({ type: Photo })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
   async update(
-    @common.Param() params: UserWhereUniqueInput,
-    @common.Body() data: UserUpdateInput
-  ): Promise<User | null> {
+    @common.Param() params: PhotoWhereUniqueInput,
+    @common.Body() data: PhotoUpdateInput
+  ): Promise<Photo | null> {
     try {
       return await this.service.update({
         where: params,
         data: data,
         select: {
           createdAt: true,
-          email: true,
-          firstName: true,
-          gusto: true,
           id: true,
-          lastName: true,
-          roles: true,
+          src: true,
           updatedAt: true,
-          username: true,
         },
       });
     } catch (error) {
@@ -165,30 +145,25 @@ export class UserControllerBase {
   }
 
   @nestAccessControl.UseRoles({
-    resource: "User",
+    resource: "Photo",
     action: "delete",
     possession: "any",
   })
   @common.Delete("/:id")
-  @swagger.ApiOkResponse({ type: User })
+  @swagger.ApiOkResponse({ type: Photo })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
   async delete(
-    @common.Param() params: UserWhereUniqueInput
-  ): Promise<User | null> {
+    @common.Param() params: PhotoWhereUniqueInput
+  ): Promise<Photo | null> {
     try {
       return await this.service.delete({
         where: params,
         select: {
           createdAt: true,
-          email: true,
-          firstName: true,
-          gusto: true,
           id: true,
-          lastName: true,
-          roles: true,
+          src: true,
           updatedAt: true,
-          username: true,
         },
       });
     } catch (error) {

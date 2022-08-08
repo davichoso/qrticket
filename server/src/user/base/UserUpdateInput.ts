@@ -11,9 +11,8 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, ValidateNested } from "class-validator";
-import { QrWhereUniqueInput } from "../../qr/base/QrWhereUniqueInput";
-import { Type } from "class-transformer";
+import { IsString, IsOptional, IsEnum } from "class-validator";
+import { EnumUserGusto } from "./EnumUserGusto";
 @InputType()
 class UserUpdateInput {
   @ApiProperty({
@@ -25,7 +24,36 @@ class UserUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
+  email?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   firstName?: string | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserGusto,
+  })
+  @IsEnum(EnumUserGusto)
+  @IsOptional()
+  @Field(() => EnumUserGusto, {
+    nullable: true,
+  })
+  gusto?:
+    | "House"
+    | "TechHouse"
+    | "Techno"
+    | "HardTechno"
+    | "Comercial"
+    | "Melodico"
+    | null;
 
   @ApiProperty({
     required: false,
@@ -48,18 +76,6 @@ class UserUpdateInput {
     nullable: true,
   })
   password?: string;
-
-  @ApiProperty({
-    required: false,
-    type: () => QrWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => QrWhereUniqueInput)
-  @IsOptional()
-  @Field(() => QrWhereUniqueInput, {
-    nullable: true,
-  })
-  qr?: QrWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

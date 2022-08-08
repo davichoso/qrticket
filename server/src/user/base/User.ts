@@ -11,9 +11,9 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsString, IsOptional, ValidateNested } from "class-validator";
+import { IsDate, IsString, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
-import { Qr } from "../../qr/base/Qr";
+import { EnumUserGusto } from "./EnumUserGusto";
 @ObjectType()
 class User {
   @ApiProperty({
@@ -33,7 +33,36 @@ class User {
   @Field(() => String, {
     nullable: true,
   })
+  email!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   firstName!: string | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserGusto,
+  })
+  @IsEnum(EnumUserGusto)
+  @IsOptional()
+  @Field(() => EnumUserGusto, {
+    nullable: true,
+  })
+  gusto?:
+    | "House"
+    | "TechHouse"
+    | "Techno"
+    | "HardTechno"
+    | "Comercial"
+    | "Melodico"
+    | null;
 
   @ApiProperty({
     required: true,
@@ -53,15 +82,6 @@ class User {
     nullable: true,
   })
   lastName!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => Qr,
-  })
-  @ValidateNested()
-  @Type(() => Qr)
-  @IsOptional()
-  qr?: Qr | null;
 
   @ApiProperty({
     required: true,
