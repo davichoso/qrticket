@@ -33,6 +33,10 @@ import { InvitationList } from "./invitation/InvitationList";
 import { InvitationCreate } from "./invitation/InvitationCreate";
 import { InvitationEdit } from "./invitation/InvitationEdit";
 import { InvitationShow } from "./invitation/InvitationShow";
+import { NotificationList } from "./notification/NotificationList";
+import { NotificationCreate } from "./notification/NotificationCreate";
+import { NotificationEdit } from "./notification/NotificationEdit";
+import { NotificationShow } from "./notification/NotificationShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -107,6 +111,13 @@ const App = (): React.ReactElement => {
           edit={InvitationEdit}
           create={InvitationCreate}
           show={InvitationShow}
+        />
+        <Resource
+          name="Notification"
+          list={NotificationList}
+          edit={NotificationEdit}
+          create={NotificationCreate}
+          show={NotificationShow}
         />
       </Admin>
     </div>

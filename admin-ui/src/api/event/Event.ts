@@ -3,6 +3,6 @@ export type Event = {
   createdAt: Date;
   id: string;
   openAt: Date;
-  title: Date | null;
+  titulo: string | null;
   updatedAt: Date;
 };

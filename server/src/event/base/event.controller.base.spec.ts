@@ -15,7 +15,7 @@ const CREATE_INPUT = {
   createdAt: new Date(),
   id: "exampleId",
   openAt: new Date(),
-  title: new Date(),
+  titulo: "exampleTitulo",
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
@@ -23,7 +23,7 @@ const CREATE_RESULT = {
   createdAt: new Date(),
   id: "exampleId",
   openAt: new Date(),
-  title: new Date(),
+  titulo: "exampleTitulo",
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
@@ -32,7 +32,7 @@ const FIND_MANY_RESULT = [
     createdAt: new Date(),
     id: "exampleId",
     openAt: new Date(),
-    title: new Date(),
+    titulo: "exampleTitulo",
     updatedAt: new Date(),
   },
 ];
@@ -41,7 +41,7 @@ const FIND_ONE_RESULT = {
   createdAt: new Date(),
   id: "exampleId",
   openAt: new Date(),
-  title: new Date(),
+  titulo: "exampleTitulo",
   updatedAt: new Date(),
 };
 
@@ -111,7 +111,6 @@ describe("Event", () => {
         closeAt: CREATE_RESULT.closeAt.toISOString(),
         createdAt: CREATE_RESULT.createdAt.toISOString(),
         openAt: CREATE_RESULT.openAt.toISOString(),
-        title: CREATE_RESULT.title.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -126,7 +125,6 @@ describe("Event", () => {
           closeAt: FIND_MANY_RESULT[0].closeAt.toISOString(),
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
           openAt: FIND_MANY_RESULT[0].openAt.toISOString(),
-          title: FIND_MANY_RESULT[0].title.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
         },
       ]);
@@ -152,7 +150,6 @@ describe("Event", () => {
         closeAt: FIND_ONE_RESULT.closeAt.toISOString(),
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
         openAt: FIND_ONE_RESULT.openAt.toISOString(),
-        title: FIND_ONE_RESULT.title.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
       });
   });

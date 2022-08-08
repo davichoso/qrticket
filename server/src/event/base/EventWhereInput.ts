@@ -15,7 +15,7 @@ import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { Type } from "class-transformer";
 import { IsOptional } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
-import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 @InputType()
 class EventWhereInput {
   @ApiProperty({
@@ -53,13 +53,13 @@ class EventWhereInput {
 
   @ApiProperty({
     required: false,
-    type: DateTimeNullableFilter,
+    type: StringNullableFilter,
   })
-  @Type(() => DateTimeNullableFilter)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => DateTimeNullableFilter, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  title?: DateTimeNullableFilter;
+  titulo?: StringNullableFilter;
 }
 export { EventWhereInput };

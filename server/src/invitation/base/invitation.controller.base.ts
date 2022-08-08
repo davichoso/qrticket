@@ -53,6 +53,7 @@ export class InvitationControllerBase {
         createdAt: true,
         id: true,
         updatedAt: true,
+        userId: true,
       },
     });
   }
@@ -75,6 +76,7 @@ export class InvitationControllerBase {
         createdAt: true,
         id: true,
         updatedAt: true,
+        userId: true,
       },
     });
   }
@@ -98,6 +100,7 @@ export class InvitationControllerBase {
         createdAt: true,
         id: true,
         updatedAt: true,
+        userId: true,
       },
     });
     if (result === null) {
@@ -130,6 +133,7 @@ export class InvitationControllerBase {
           createdAt: true,
           id: true,
           updatedAt: true,
+          userId: true,
         },
       });
     } catch (error) {
@@ -161,6 +165,7 @@ export class InvitationControllerBase {
           createdAt: true,
           id: true,
           updatedAt: true,
+          userId: true,
         },
       });
     } catch (error) {
