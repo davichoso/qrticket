@@ -13,8 +13,6 @@ model User {
   id        String   @id @default(cuid())
   lastName  String?
   password  String
-  qr        Qr?      @relation(fields: [qrId], references: [id])
-  qrId      String?
   roles     String[]
   updatedAt DateTime @updatedAt
   username  String   @unique
@@ -26,7 +24,6 @@ model Qr {
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
   used      Boolean
-  users     User[]
 }
 
 model Event {
