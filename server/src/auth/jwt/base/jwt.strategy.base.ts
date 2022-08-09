@@ -16,7 +16,7 @@ export class JwtStrategyBase
   ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      ignoreExpiration: false,
+      ignoreExpiration: true,
       secretOrKey,
     });
   }

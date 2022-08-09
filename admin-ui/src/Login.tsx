@@ -24,7 +24,7 @@ const Login = ({ theme }: { theme?: object }) => {
     <ThemeProvider theme={createTheme(defaultTheme)}>
       <div className={`${CLASS_NAME}`}>
         <div className={`${CLASS_NAME}__wrapper`}>
-          <div className={`${CLASS_NAME}__box`}>
+          {/* <div className={`${CLASS_NAME}__box`}>
             <img
               src="https://amplication.com/assets/graphql.png"
               alt="GraphQL API"
@@ -42,17 +42,14 @@ const Login = ({ theme }: { theme?: object }) => {
             >
               Continue
             </Button>
-          </div>
+          </div> */}
           <div className={`${CLASS_NAME}__box`}>
-            <img
-              src="https://amplication.com/assets/react-admin.png"
-              alt="React-Admin"
-            />
-            <h2>Admin UI</h2>
-            <div className={`${CLASS_NAME}__box__message`}>
+            
+            <h2>The Bassement Admin</h2>
+            {/* <div className={`${CLASS_NAME}__box__message`}>
               Sign in to a React-Admin client with ready-made forms for creating
               and editing all the data models of your application.
-            </div>
+            </div> */}
             <form onSubmit={submit}>
               <label>
                 <span>Username</span>
@@ -79,7 +76,7 @@ const Login = ({ theme }: { theme?: object }) => {
               </Button>
             </form>
           </div>
-          <div className={`${CLASS_NAME}__box`}>
+          {/* <div className={`${CLASS_NAME}__box`}>
             <img
               src="https://amplication.com/assets/restapi.png"
               alt="REST API"
@@ -97,17 +94,17 @@ const Login = ({ theme }: { theme?: object }) => {
             >
               Continue
             </Button>
-          </div>
+          </div> */}
 
           <Notification />
         </div>
-        <div className={`${CLASS_NAME}__read-more`}>
+        {/* <div className={`${CLASS_NAME}__read-more`}>
           <span>Read </span>
           <a href="https://docs.amplication.com/docs/api" target="docs">
             Amplication docs
           </a>
           <span> to learn more</span>
-        </div>
+        </div> */}
       </div>
     </ThemeProvider>
   );

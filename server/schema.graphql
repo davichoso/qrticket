@@ -1,0 +1,472 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input BooleanFilter {
+  equals: Boolean
+  not: Boolean
+}
+
+input Credentials {
+  password: String!
+  username: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input DateTimeFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+input DateTimeNullableFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+enum EnumUserGusto {
+  Comercial
+  HardTechno
+  House
+  MelDico
+  TechHouse
+  Techno
+}
+
+type Event {
+  closeAt: DateTime!
+  createdAt: DateTime!
+  id: String!
+  openAt: DateTime!
+  titulo: String
+  updatedAt: DateTime!
+}
+
+input EventCreateInput {
+  closeAt: DateTime!
+  openAt: DateTime!
+  titulo: String
+}
+
+input EventOrderByInput {
+  closeAt: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  openAt: SortOrder
+  titulo: SortOrder
+  updatedAt: SortOrder
+}
+
+input EventUpdateInput {
+  closeAt: DateTime
+  openAt: DateTime
+  titulo: String
+}
+
+input EventWhereInput {
+  closeAt: DateTimeFilter
+  id: StringFilter
+  openAt: DateTimeFilter
+  titulo: StringNullableFilter
+}
+
+input EventWhereUniqueInput {
+  id: String!
+}
+
+type Invitation {
+  createdAt: DateTime!
+  id: String!
+  updatedAt: DateTime!
+  userId: String
+}
+
+input InvitationCreateInput {
+  userId: String
+}
+
+input InvitationOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input InvitationUpdateInput {
+  userId: String
+}
+
+input InvitationWhereInput {
+  id: StringFilter
+  userId: StringNullableFilter
+}
+
+input InvitationWhereUniqueInput {
+  id: String!
+}
+
+type MetaQueryPayload {
+  count: Float!
+}
+
+type Mutation {
+  createEvent(data: EventCreateInput!): Event!
+  createInvitation(data: InvitationCreateInput!): Invitation!
+  createNotification(data: NotificationCreateInput!): Notification!
+  createPhoto(data: PhotoCreateInput!): Photo!
+  createPromotion(data: PromotionCreateInput!): Promotion!
+  createQr(data: QrCreateInput!): Qr!
+  createUser(data: UserCreateInput!): User!
+  deleteEvent(where: EventWhereUniqueInput!): Event!
+  deleteInvitation(where: InvitationWhereUniqueInput!): Invitation!
+  deleteNotification(where: NotificationWhereUniqueInput!): Notification!
+  deletePhoto(where: PhotoWhereUniqueInput!): Photo!
+  deletePromotion(where: PromotionWhereUniqueInput!): Promotion!
+  deleteQr(where: QrWhereUniqueInput!): Qr!
+  deleteRoom(where: RoomWhereUniqueInput!): Room!
+  deleteUser(where: UserWhereUniqueInput!): User!
+  login(credentials: Credentials!): UserInfo!
+  updateEvent(data: EventUpdateInput!, where: EventWhereUniqueInput!): Event!
+  updateInvitation(data: InvitationUpdateInput!, where: InvitationWhereUniqueInput!): Invitation!
+  updateNotification(data: NotificationUpdateInput!, where: NotificationWhereUniqueInput!): Notification!
+  updatePhoto(data: PhotoUpdateInput!, where: PhotoWhereUniqueInput!): Photo!
+  updatePromotion(data: PromotionUpdateInput!, where: PromotionWhereUniqueInput!): Promotion!
+  updateQr(data: QrUpdateInput!, where: QrWhereUniqueInput!): Qr!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+}
+
+type Notification {
+  createdAt: DateTime!
+  id: String!
+  texto: String
+  titulo: String
+  updatedAt: DateTime!
+}
+
+input NotificationCreateInput {
+  texto: String
+  titulo: String
+}
+
+input NotificationOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  texto: SortOrder
+  titulo: SortOrder
+  updatedAt: SortOrder
+}
+
+input NotificationUpdateInput {
+  texto: String
+  titulo: String
+}
+
+input NotificationWhereInput {
+  id: StringFilter
+  texto: StringNullableFilter
+  titulo: StringNullableFilter
+}
+
+input NotificationWhereUniqueInput {
+  id: String!
+}
+
+type Photo {
+  createdAt: DateTime!
+  id: String!
+  src: String
+  titulo: String
+  updatedAt: DateTime!
+}
+
+input PhotoCreateInput {
+  src: String
+  titulo: String
+}
+
+input PhotoOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  src: SortOrder
+  titulo: SortOrder
+  updatedAt: SortOrder
+}
+
+input PhotoUpdateInput {
+  src: String
+  titulo: String
+}
+
+input PhotoWhereInput {
+  id: StringFilter
+  src: StringNullableFilter
+  titulo: StringNullableFilter
+}
+
+input PhotoWhereUniqueInput {
+  id: String!
+}
+
+type Promotion {
+  Nombre: String
+  createdAt: DateTime!
+  descripciN: String
+  fechaFin: DateTime
+  fechaInicio: DateTime
+  id: String!
+  imagen: String
+  updatedAt: DateTime!
+}
+
+input PromotionCreateInput {
+  Nombre: String
+  descripciN: String
+  fechaFin: DateTime
+  fechaInicio: DateTime
+  imagen: String
+}
+
+input PromotionOrderByInput {
+  Nombre: SortOrder
+  createdAt: SortOrder
+  descripciN: SortOrder
+  fechaFin: SortOrder
+  fechaInicio: SortOrder
+  id: SortOrder
+  imagen: SortOrder
+  updatedAt: SortOrder
+}
+
+input PromotionUpdateInput {
+  Nombre: String
+  descripciN: String
+  fechaFin: DateTime
+  fechaInicio: DateTime
+  imagen: String
+}
+
+input PromotionWhereInput {
+  Nombre: StringNullableFilter
+  descripciN: StringNullableFilter
+  fechaFin: DateTimeNullableFilter
+  fechaInicio: DateTimeNullableFilter
+  id: StringFilter
+  imagen: StringNullableFilter
+}
+
+input PromotionWhereUniqueInput {
+  id: String!
+}
+
+type Qr {
+  code: String!
+  createdAt: DateTime!
+  id: String!
+  updatedAt: DateTime!
+  used: Boolean!
+}
+
+input QrCreateInput {
+  code: String!
+  used: Boolean!
+}
+
+input QrOrderByInput {
+  code: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  updatedAt: SortOrder
+  used: SortOrder
+}
+
+input QrUpdateInput {
+  code: String
+  used: Boolean
+}
+
+input QrWhereInput {
+  code: StringFilter
+  id: StringFilter
+  used: BooleanFilter
+}
+
+input QrWhereUniqueInput {
+  id: String!
+}
+
+type Query {
+  _eventsMeta(orderBy: [EventOrderByInput!], skip: Float, take: Float, where: EventWhereInput): MetaQueryPayload!
+  _invitationsMeta(orderBy: [InvitationOrderByInput!], skip: Float, take: Float, where: InvitationWhereInput): MetaQueryPayload!
+  _notificationsMeta(orderBy: [NotificationOrderByInput!], skip: Float, take: Float, where: NotificationWhereInput): MetaQueryPayload!
+  _photosMeta(orderBy: [PhotoOrderByInput!], skip: Float, take: Float, where: PhotoWhereInput): MetaQueryPayload!
+  _promotionsMeta(orderBy: [PromotionOrderByInput!], skip: Float, take: Float, where: PromotionWhereInput): MetaQueryPayload!
+  _qrsMeta(orderBy: [QrOrderByInput!], skip: Float, take: Float, where: QrWhereInput): MetaQueryPayload!
+  _roomsMeta(orderBy: [RoomOrderByInput!], skip: Float, take: Float, where: RoomWhereInput): MetaQueryPayload!
+  _usersMeta(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): MetaQueryPayload!
+  event(where: EventWhereUniqueInput!): Event
+  events(orderBy: [EventOrderByInput!], skip: Float, take: Float, where: EventWhereInput): [Event!]!
+  invitation(where: InvitationWhereUniqueInput!): Invitation
+  invitations(orderBy: [InvitationOrderByInput!], skip: Float, take: Float, where: InvitationWhereInput): [Invitation!]!
+  notification(where: NotificationWhereUniqueInput!): Notification
+  notifications(orderBy: [NotificationOrderByInput!], skip: Float, take: Float, where: NotificationWhereInput): [Notification!]!
+  photo(where: PhotoWhereUniqueInput!): Photo
+  photos(orderBy: [PhotoOrderByInput!], skip: Float, take: Float, where: PhotoWhereInput): [Photo!]!
+  promotion(where: PromotionWhereUniqueInput!): Promotion
+  promotions(orderBy: [PromotionOrderByInput!], skip: Float, take: Float, where: PromotionWhereInput): [Promotion!]!
+  qr(where: QrWhereUniqueInput!): Qr
+  qrs(orderBy: [QrOrderByInput!], skip: Float, take: Float, where: QrWhereInput): [Qr!]!
+  room(where: RoomWhereUniqueInput!): Room
+  rooms(orderBy: [RoomOrderByInput!], skip: Float, take: Float, where: RoomWhereInput): [Room!]!
+  user(where: UserWhereUniqueInput!): User
+  userInfo: UserInfo!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+enum QueryMode {
+  Default
+  Insensitive
+}
+
+type Room {
+  createdAt: DateTime!
+  id: String!
+  updatedAt: DateTime!
+}
+
+input RoomOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  updatedAt: SortOrder
+}
+
+input RoomWhereInput {
+  id: StringFilter
+}
+
+input RoomWhereUniqueInput {
+  id: String!
+}
+
+enum SortOrder {
+  Asc
+  Desc
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+type User {
+  createdAt: DateTime!
+  email: String
+  firstName: String
+  gusto: EnumUserGusto
+  id: String!
+  lastName: String
+  qrid: String
+  qrtxt: String
+  roles: [String!]!
+  updatedAt: DateTime!
+  username: String!
+}
+
+input UserCreateInput {
+  email: String
+  firstName: String
+  gusto: EnumUserGusto
+  lastName: String
+  password: String!
+  qrid: String
+  qrtxt: String
+  roles: [String!]!
+  username: String!
+}
+
+type UserInfo {
+  accessToken: String
+  roles: [String!]!
+  username: String!
+}
+
+input UserOrderByInput {
+  createdAt: SortOrder
+  email: SortOrder
+  firstName: SortOrder
+  gusto: SortOrder
+  id: SortOrder
+  lastName: SortOrder
+  password: SortOrder
+  qrid: SortOrder
+  qrtxt: SortOrder
+  roles: SortOrder
+  updatedAt: SortOrder
+  username: SortOrder
+}
+
+input UserUpdateInput {
+  email: String
+  firstName: String
+  gusto: EnumUserGusto
+  lastName: String
+  password: String
+  qrid: String
+  qrtxt: String
+  roles: [String!]
+  username: String
+}
+
+input UserWhereInput {
+  email: StringNullableFilter
+  firstName: StringNullableFilter
+  gusto: EnumUserGusto
+  id: StringFilter
+  lastName: StringNullableFilter
+  qrid: StringNullableFilter
+  qrtxt: StringNullableFilter
+  username: StringFilter
+}
+
+input UserWhereUniqueInput {
+  id: String!
+}
